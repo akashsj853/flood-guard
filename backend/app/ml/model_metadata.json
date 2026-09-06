@@ -1,0 +1,45 @@
+{
+  "model_type": "RandomForest",
+  "features": [
+    "rainfall_1h",
+    "rainfall_3h",
+    "rainfall_6h",
+    "rainfall_12h",
+    "rainfall_24h",
+    "forecast_rainfall_1h",
+    "forecast_rainfall_3h",
+    "forecast_rainfall_6h",
+    "forecast_rainfall_12h",
+    "temperature",
+    "humidity",
+    "pressure",
+    "wind_speed",
+    "elevation",
+    "slope",
+    "drainage_capacity",
+    "impervious_surface",
+    "population_density",
+    "historical_flood_frequency"
+  ],
+  "threshold": 0.388,
+  "metrics": {
+    "accuracy": 0.7615,
+    "precision": 0.5501,
+    "recall": 0.6321,
+    "f1": 0.5883,
+    "roc_auc": 0.787,
+    "confusion_matrix": [
+      [
+        2837,
+        669
+      ],
+      [
+        476,
+        818
+      ]
+    ]
+  },
+  "selection_criterion": "max(recall, f1) at tuned precision>=0.55 threshold",
+  "n_training_samples": 24000,
+  "positive_rate": 0.2695
+}

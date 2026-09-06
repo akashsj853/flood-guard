@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --canvas: #07141c;
+  --surface: #0d2029;
+  --surface-raised: #12303a;
+  --line: #21434d;
+  --ink: #e7f4f1;
+  --muted: #8eaca9;
+  --accent: #54d6bf;
+  --accent-strong: #19b89f;
+}
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', ui-sans-serif, sans-serif;
+  background: var(--canvas);
+  color: var(--ink);
+  letter-spacing: 0;
+}
+
+.app-shell { background: var(--canvas); }
+.display-font { font-family: 'Space Grotesk', 'DM Sans', sans-serif; }
+.auth-input { display: block; width: 100%; margin-top: .5rem; border-radius: .75rem; border: 1px solid #28505a; background: #071a22; color: #e7f4f1; padding: .75rem; }
+
+button, a, input, select { outline-offset: 3px; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid var(--accent);
+}
+
+.theme-light {
+  color-scheme: light;
+  --canvas: #eef5f2;
+  --surface: #ffffff;
+  --surface-raised: #e0eeea;
+  --line: #c4dad4;
+  --ink: #102d32;
+  --muted: #557177;
+  --accent: #087f72;
+  --accent-strong: #056257;
+}
+
+/* Leaflet popup text colour on dark theme. */
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  background: #1e293b;
+  color: #e2e8f0;
+}
+
+/* Thin scrollbars. */
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-thumb { background: var(--line); border-radius: 4px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

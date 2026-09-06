@@ -1,0 +1,13 @@
+import { useState } from 'react'
+import { ArrowLeft, LogIn } from 'lucide-react'
+
+export default function Login({ onSubmit, onBack, onRegister, onAdminRegister, admin = false }) {
+  const [form, setForm] = useState({ username: '', password: '' })
+  const [error, setError] = useState('')
+  async function submit(event) { event.preventDefault(); setError(''); try { await onSubmit(form) } catch (e) { setError(e.response?.data?.detail || 'Sign in failed') } }
+  return <AuthForm title={admin ? 'Administrator access' : 'Welcome back'} subtitle={admin ? 'Secure access for FloodGuard operations teams.' : 'Sign in to your FloodGuard workspace.'} submitLabel={admin ? 'Enter operations center' : 'Sign in'} icon={LogIn} form={form} setForm={setForm} error={error} onSubmit={submit} onBack={onBack} footer={admin ? <span>Need an admin account? <button type="button" onClick={onAdminRegister} className="text-teal-300">Create administrator account</button><br /><button type="button" onClick={onRegister} className="text-slate-400 mt-2">Citizen sign in</button></span> : <button type="button" onClick={onRegister} className="text-teal-300">Create an account</button>} />
+}
+
+function AuthForm({ title, subtitle, submitLabel, icon: Icon, form, setForm, error, onSubmit, onBack, footer }) {
+  return <main className="min-h-screen bg-[#07141c] text-slate-100 flex items-center justify-center p-6"><form onSubmit={onSubmit} className="w-full max-w-md rounded-3xl border border-teal-900/70 bg-[#0d2029] p-7 shadow-2xl"><button type="button" onClick={onBack} className="text-slate-400 hover:text-white mb-10" aria-label="Back"><ArrowLeft size={19} /></button><Icon className="text-teal-300" /><h1 className="font-display text-3xl font-bold mt-4">{title}</h1><p className="text-slate-400 mt-2">{subtitle}</p><label className="block text-sm text-slate-300 mt-7">Username or email<input required value={form.username} onChange={(e) => setForm({ ...form, username: e.target.value })} className="auth-input" /></label><label className="block text-sm text-slate-300 mt-4">Password<input required type="password" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} className="auth-input" /></label>{error && <p role="alert" className="text-rose-300 text-sm mt-4">{error}</p>}<button className="w-full mt-6 rounded-xl bg-teal-400 text-[#062027] py-3 font-bold">{submitLabel}</button><p className="text-center text-sm text-slate-400 mt-6">{footer}</p></form></main>
+}

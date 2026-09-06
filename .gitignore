@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+backend/venv/
+.venv/
+.venv311/
+__pycache__/
+
+# Backend data / DB (keep seed CSVs in ml/data)
+*.db
+*.sqlite3
+backend/floodguard.db
+
+# Node / frontend
+node_modules/
+frontend/dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Env / secrets — NEVER commit
+.env
+.env.*
+*.local
+
+# Tooling artifacts
+.claude-flow/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
